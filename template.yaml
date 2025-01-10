@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Spring Boot + GraalVM + DSQL
+Parameters:
+  Environment:
+    Type: String
+  ClusterEndpoint:
+    Type: String
+  DbUsername:
+    Type: String
+Resources:
+  SpringBootNativeDsqlApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Environment
+      Auth:
+        ApiKeyRequired: true
+        UsagePlan:
+          CreateUsagePlan: PER_API
+          UsagePlanName: SpringBootNativeDsqlUsagePlan
+  SpringBootNativeDsqlFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      MemorySize: 512
+      FunctionName: aws-spring-boot-native-dsql
+      Timeout: 15
+      CodeUri: ./target/aws-spring-boot-native-dsql-0.0.1-SNAPSHOT-native-zip.zip
+      Handler: NOP
+      Runtime: provided.al2023
+      Role: !GetAtt SpringBootNativeDsqlFunctionRole.Arn
+      Events:
+        HttpApiEvent:
+          Type: Api
+          Properties:
+            RestApiId: !Ref SpringBootNativeDsqlApi
+            Path: /{proxy+}
+            Method: any
+            TimeoutInMillis: 20000
+      Environment:
+        Variables:
+          CLUSTER_ENDPOINT: !Ref ClusterEndpoint
+          DB_USERNAME: !Ref DbUsername
+  SpringBootNativeDsqlFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: SpringBootNativeDsqlFunctionRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: DbConnectAdminPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: "dsql:DbConnectAdmin"
+                Resource: "*"
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL

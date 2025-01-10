@@ -1,0 +1,21 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+# Other
+.DS_Store
+samconfig.toml
+src/main/resources/META-INF/native-image/*.json
+
+# Application overrides
+src/main/resources/application-dev.properties
+src/main/resources/application-test.properties
+src/main/resources/application-prod.properties

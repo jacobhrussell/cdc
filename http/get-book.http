@@ -1,0 +1,2 @@
+@id = a527fcec-82f0-42ba-8a7a-6a897406b5f4
+GET http://localhost:8080/book/{{id}}
