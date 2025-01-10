@@ -1,5 +1,7 @@
 # Change Data Capture (CDC)
 
+This project demonstrates different ways to capture changes in Postgres.
+
 ## Running Locally
 
 These instructions assume you are using IntelliJ as your IDE.
