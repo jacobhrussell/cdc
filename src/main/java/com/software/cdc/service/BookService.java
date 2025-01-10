@@ -1,8 +1,8 @@
-package com.software.aws_spring_boot_native_dsql.service;
+package com.software.cdc.service;
 
-import com.software.aws_spring_boot_native_dsql.model.api.Book;
-import com.software.aws_spring_boot_native_dsql.model.entity.BookEntity;
-import com.software.aws_spring_boot_native_dsql.repository.BookRepository;
+import com.software.cdc.model.api.Book;
+import com.software.cdc.model.entity.BookEntity;
+import com.software.cdc.repository.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

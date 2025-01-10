@@ -1,4 +1,4 @@
-package com.software.aws_spring_boot_native_dsql.configuration;
+package com.software.cdc.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres:15
-    container_name: aws-spring-boot-native-dsql-postgres
+    container_name: cdc
     restart: always
     environment:
       POSTGRES_USER: admin

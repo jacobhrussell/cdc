@@ -1,12 +1,12 @@
-package com.software.aws_spring_boot_native_dsql;
+package com.software.cdc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AwsSpringBootNativeDsqlApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(AwsSpringBootNativeDsqlApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
