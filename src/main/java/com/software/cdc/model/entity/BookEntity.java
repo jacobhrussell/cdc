@@ -1,6 +1,6 @@
-package com.software.aws_spring_boot_native_dsql.model.entity;
+package com.software.cdc.model.entity;
 
-import com.software.aws_spring_boot_native_dsql.model.api.Book;
+import com.software.cdc.model.api.Book;
 import jakarta.persistence.*;
 import lombok.Data;
 

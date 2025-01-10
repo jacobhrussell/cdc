@@ -1,6 +1,6 @@
-package com.software.aws_spring_boot_native_dsql.repository;
+package com.software.cdc.repository;
 
-import com.software.aws_spring_boot_native_dsql.model.entity.BookEntity;
+import com.software.cdc.model.entity.BookEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

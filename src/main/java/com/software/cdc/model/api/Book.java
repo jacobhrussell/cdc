@@ -1,6 +1,6 @@
-package com.software.aws_spring_boot_native_dsql.model.api;
+package com.software.cdc.model.api;
 
-import com.software.aws_spring_boot_native_dsql.model.entity.BookEntity;
+import com.software.cdc.model.entity.BookEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -48,19 +48,3 @@ Delete:
 ```shell
 curl -X DELETE http://localhost:8080/book/1 | jq
 ```
-
-## Connecting to Aurora DSQL
-
-User your preferred RDMBS tool to connect via the Aurora DSQL endpoint found in the AWS Console. You can use the AWS
-Console to create a short-lived token to use as a password. You will need to change the password by generating another
-token through the console when it expires.
-
-Schema visualization does not work, so you will need to query the Postgres system tables in order to see database
-information:
-
-- see all schemas: `select * from pg_namespace;`
-- see all tables: `select * from pg_tables where schemaname = 'public';`
-
-## Resources
-
-- [Amazon Aurora DSQL User Guide (PDF)](https://docs.aws.amazon.com/pdfs/aurora-dsql/latest/userguide/aurora-dsql-ug.pdf)

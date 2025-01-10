@@ -6,13 +6,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.4.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.software</groupId>
-    <artifactId>aws-spring-boot-native-dsql</artifactId>
+    <artifactId>cdc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>aws-spring-boot-native-dsql</name>
-    <description>AWS Spring Boot Native DSQL</description>
+    <name>cdc</name>
+    <description>CDC</description>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.2</spring-cloud.version>
@@ -65,12 +65,6 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.4</version>
         </dependency>
-
-        <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>dsql</artifactId>
-            <version>2.29.27</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -97,66 +91,6 @@
                     <artifactId>spring-boot-starter-web</artifactId>
                 </dependency>
             </dependencies>
-        </profile>
-        <profile>
-            <id>native</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <jvmArguments>
-                                -agentlib:native-image-agent=config-merge-dir=src/main/resources/META-INF/native-image/
-                                --enable-preview
-                            </jvmArguments>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.graalvm.buildtools</groupId>
-                        <artifactId>native-maven-plugin</artifactId>
-                        <configuration>
-                            <buildArgs>
-                                <buildArg>--enable-url-protocols=http</buildArg>
-                                <buildArg>-march=compatibility</buildArg>
-                            </buildArgs>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>build</goal>
-                                </goals>
-                                <phase>package</phase>
-                            </execution>
-                            <execution>
-                                <id>test</id>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <phase>test</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>native-zip</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>single</goal>
-                                </goals>
-                                <inherited>false</inherited>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <descriptors>
-                                <descriptor>src/assembly/native.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 
