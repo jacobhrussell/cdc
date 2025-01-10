@@ -1,4 +1,4 @@
-@id = a527fcec-82f0-42ba-8a7a-6a897406b5f4
+@id = 25423774-dfde-484d-b2fc-f164c1db360e
 PUT http://localhost:8080/book/{{id}}
 Content-Type: application/json
 

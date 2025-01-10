@@ -23,5 +23,4 @@ public class BookEntity {
         bookEntity.setTitle(book.getTitle());
         return bookEntity;
     }
-
 }
